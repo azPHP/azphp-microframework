@@ -1,0 +1,28 @@
+{
+    "name": "azphp/microframework-demo",
+    "description": "Development example of building a micro-framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gordon",
+            "email": "baohx2000@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AZMicro\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AZMicroTest\\": "tests/"
+        }
+    },
+    "require": {
+        "php-di/php-di": "^6.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    }
+}
