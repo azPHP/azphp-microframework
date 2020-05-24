@@ -6,7 +6,7 @@ use AZMicroAssets\Bootstrap\LoggerService;
 use AZMicroAssets\Bootstrap\UnitBootstrap;
 use PHPUnit\Framework\TestCase;
 
-class AbstractBootstrapTest extends TestCase
+class UnitBootstrapTest extends TestCase
 {
 
     public function testBootstrapReturnsContainer(): void
