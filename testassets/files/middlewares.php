@@ -1,9 +1,9 @@
 <?php
 
+use AZMicroAssets\API\TestingMiddleware;
 use Middlewares\ErrorHandler;
-use Middlewares\FastRoute;
 
 return [
+    TestingMiddleware::class,
     ErrorHandler::class,
-    FastRoute::class,
 ];

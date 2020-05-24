@@ -4,6 +4,7 @@
 namespace AZMicroAssets\Bootstrap;
 
 
+use Auryn\Injector;
 use AZMicro\Bootstrap\AbstractBootstrap;
 
 class UnitBootstrap extends AbstractBootstrap
@@ -17,5 +18,10 @@ class UnitBootstrap extends AbstractBootstrap
             $middlewares,
             require dirname(__DIR__).'/files/routes.php'
         );
+    }
+
+    public function getContainer(): Injector
+    {
+        return self::$container;
     }
 }

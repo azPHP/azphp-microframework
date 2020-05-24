@@ -5,11 +5,14 @@ namespace AZMicro\Bootstrap;
 
 use Auryn\Injector;
 use FastRoute\Dispatcher;
+use FastRoute\RouteParser;
 use Middlewares\FastRoute;
 use Middlewares\RequestHandler;
 use Psr\Http\Message\ServerRequestInterface;
 use Relay\Relay;
 use Relay\RelayBuilder;
+
+use function FastRoute\simpleDispatcher;
 
 abstract class AbstractBootstrap
 {
@@ -56,7 +59,9 @@ abstract class AbstractBootstrap
 
         array_push($this->middlewares, FastRoute::class, RequestHandler::class);
         // prepare the router
-        $di->delegate(Dispatcher::class, $routes);
+        $dispatcher = static function () use ($routes) { return simpleDispatcher($routes); };
+        $di->delegate(Dispatcher::class, $dispatcher);
+        $di->alias(RouteParser::class, RouteParser\Std::class);
     }
 
     public function dispatch(ServerRequestInterface $request): void
