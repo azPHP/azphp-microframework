@@ -31,6 +31,7 @@ abstract class AbstractBootstrap
     /**
      * @param callable[] $diConfigurators
      * @param string[] $middlewares
+     * @param callable $routes
      */
     public function prepare(array $diConfigurators, array $middlewares, callable $routes): void
     {
