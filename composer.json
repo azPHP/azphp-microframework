@@ -9,6 +9,7 @@
             "email": "baohx2000@gmail.com"
         }
     ],
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "AZMicro\\": "src/"
@@ -28,6 +29,13 @@
         "roave/security-advisories": "dev-master",
         "phpunit/phpunit": "^9.0",
         "psr/log": "^1.1",
-        "monolog/monolog": "^2.0"
-    }
+        "monolog/monolog": "^2.0",
+        "sempro/phpunit-pretty-print": "dev-for-phpunit-9"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/baohx2000/phpunit-pretty-print"
+        }
+    ]
 }
