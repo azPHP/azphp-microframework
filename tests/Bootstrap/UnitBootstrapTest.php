@@ -14,7 +14,7 @@ class UnitBootstrapTest extends TestCase
         $this->doesNotPerformAssertions();
         $bs = new UnitBootstrap();
 
-        $bs->prepare([]);
+        $bs->prepare();
         $bs->bootstrap();
     }
 
@@ -22,7 +22,7 @@ class UnitBootstrapTest extends TestCase
     {
         $bs = new UnitBootstrap();
 
-        $bs->prepare([]);
+        $bs->prepare();
         $di = $bs->bootstrap();
 
         $logger = $di->make(LoggerService::class);
