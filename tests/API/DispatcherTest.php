@@ -25,7 +25,7 @@ class DispatcherTest extends TestCase
         $this->bs->bootstrap();
     }
 
-    public function testDispatchTestRoute()
+    public function testDispatchTestRoute(): void
     {
         /** @var ServerRequestInterface|ServerRequest $request */
         $request = ServerRequestFactory::fromGlobals()
@@ -40,7 +40,7 @@ class DispatcherTest extends TestCase
         $this->assertEquals(TestAction::TEST_OUTPUT, $response->getBody()->getContents());
     }
 
-    public function testDispatchErrorRoute()
+    public function testDispatchErrorRoute(): void
     {
         /** @var ServerRequestInterface|ServerRequest $request */
         $request = ServerRequestFactory::fromGlobals()
@@ -55,7 +55,7 @@ class DispatcherTest extends TestCase
         $this->assertStringContainsString('Something bad happened', $response->getBody()->getContents());
     }
 
-    public function testDispatchErrorRouteRequiringJson()
+    public function testDispatchErrorRouteRequiringJson(): void
     {
         /** @var ServerRequestInterface|ServerRequest $request */
         $request = ServerRequestFactory::fromGlobals()
