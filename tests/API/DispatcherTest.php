@@ -54,4 +54,21 @@ class DispatcherTest extends TestCase
         $this->assertEquals(500, $response->getStatusCode());
         $this->assertStringContainsString('Something bad happened', $response->getBody()->getContents());
     }
+
+    public function testDispatchErrorRouteRequiringJson()
+    {
+        /** @var ServerRequestInterface|ServerRequest $request */
+        $request = ServerRequestFactory::fromGlobals()
+            ->withMethod('GET')
+            ->withHeader('Accept', 'application/json')
+            ->withUri(new Uri('/error'));
+        $this->bs->dispatch($request);
+        $testMiddleware = $this->bs->getContainer()->make(TestingMiddleware::class);
+
+        $response = $testMiddleware->response;
+        $response->getBody()->rewind();
+        $this->assertEquals(500, $response->getStatusCode());
+        $this->assertEquals('{"type":"RuntimeException","code":0,"message":"Something bad happened"}', $response->getBody()->getContents());
+        $this->assertContainsEquals('application/json', $response->getHeader('Content-Type'));
+    }
 }
